@@ -1,0 +1,89 @@
+{
+  "tag": "H30_a2_L94",
+  "thr_policy": "f1",
+  "beta": 1.0,
+  "min_precision": null,
+  "min_recall": null,
+  "use_logit_adjust": false,
+  "la_tau": 1.0,
+  "models": {
+    "xgb": {
+      "s1": {
+        "thr": 0.5002538561820984,
+        "precision": 0.16669197671475575,
+        "recall": 0.5488333333333333,
+        "f1": 0.2557173364391689,
+        "fbeta": 0.2557173364391689,
+        "ap": 0.16750501013975616,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      },
+      "s2": {
+        "thr": 0.3860016465187073,
+        "precision": 0.49925925925925924,
+        "recall": 0.9489616332277367,
+        "f1": 0.6542895279694547,
+        "fbeta": 0.6542895279694547,
+        "ap": 0.5884175382808666,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      }
+    },
+    "rf": {
+      "s1": {
+        "thr": 0.5032152391133569,
+        "precision": 0.15771491550330638,
+        "recall": 0.7155,
+        "f1": 0.2584587597829671,
+        "fbeta": 0.2584587597829671,
+        "ap": 0.16219879469431356,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      },
+      "s2": {
+        "thr": 0.4456025939111886,
+        "precision": 0.5026809651474531,
+        "recall": 0.9239704329461457,
+        "f1": 0.6511224110128141,
+        "fbeta": 0.6511224110128141,
+        "ap": 0.5832393211073066,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      }
+    },
+    "lr": {
+      "s1": {
+        "thr": 0.5136591624213244,
+        "precision": 0.17484564615712156,
+        "recall": 0.5475,
+        "f1": 0.2650476036788327,
+        "fbeta": 0.2650476036788327,
+        "ap": 0.17492426433768535,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      },
+      "s2": {
+        "thr": 0.43050828928333307,
+        "precision": 0.5054380067233538,
+        "recall": 0.8996832101372756,
+        "f1": 0.6472524689790279,
+        "fbeta": 0.6472524689790279,
+        "ap": 0.5959264180881185,
+        "policy": "f1",
+        "beta": 1.0,
+        "min_precision": null,
+        "min_recall": null
+      }
+    }
+  }
+}
