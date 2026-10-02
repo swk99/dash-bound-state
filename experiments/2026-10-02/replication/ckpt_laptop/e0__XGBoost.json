@@ -1,0 +1,1 @@
+{"model": "XGBoost", "tau_s1": 0.5002538561820984, "tau_s2": 0.3860016465187073, "dataset_fire_rate": 0.2720058780308597, "window_start": 0, "window_fire_rate_pi1": 0.307, "threads": "{\"s1\": \"1\", \"s2\": \"1\"}"}

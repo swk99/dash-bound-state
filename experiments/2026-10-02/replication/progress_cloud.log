@@ -1,0 +1,36 @@
+2026-10-02T14:17:35.285274Z +0s start rep_cloud_20261002T141735Z env=cloud redis=localhost:6379
+2026-10-02T14:17:35.398224Z +0s XGBoost threads {'s1': '1', 's2': '1'}
+2026-10-02T14:17:39.411684Z +4s P0direct K=1 repeat=0 engine=B2 5000 req 4.0s hostcpu_mean=46%
+2026-10-02T14:17:44.428024Z +9s P0direct K=1 repeat=0 engine=A 5000 req 5.0s hostcpu_mean=47%
+2026-10-02T14:17:51.440673Z +16s P0direct K=1 repeat=0 engine=B1 5000 req 7.0s hostcpu_mean=45%
+2026-10-02T14:17:58.476002Z +23s P0direct K=1 repeat=1 engine=B1 5000 req 7.0s hostcpu_mean=43%
+2026-10-02T14:18:02.486814Z +27s P0direct K=1 repeat=1 engine=B2 5000 req 4.0s hostcpu_mean=46%
+2026-10-02T14:18:07.498413Z +32s P0direct K=1 repeat=1 engine=A 5000 req 5.0s hostcpu_mean=47%
+2026-10-02T14:18:12.524959Z +37s P0direct K=1 repeat=2 engine=A 5000 req 5.0s hostcpu_mean=47%
+2026-10-02T14:18:16.535872Z +41s P0direct K=1 repeat=2 engine=B2 5000 req 4.0s hostcpu_mean=44%
+2026-10-02T14:18:23.551364Z +48s P0direct K=1 repeat=2 engine=B1 5000 req 7.0s hostcpu_mean=44%
+2026-10-02T14:18:27.581090Z +52s P0direct K=1 repeat=3 engine=B2 5000 req 4.0s hostcpu_mean=44%
+2026-10-02T14:18:32.591441Z +58s P0direct K=1 repeat=3 engine=A 5000 req 5.0s hostcpu_mean=45%
+2026-10-02T14:18:38.606109Z +64s P0direct K=1 repeat=3 engine=B1 5000 req 6.0s hostcpu_mean=48%
+2026-10-02T14:18:42.631837Z +68s P0direct K=1 repeat=4 engine=B2 5000 req 4.0s hostcpu_mean=43%
+2026-10-02T14:18:48.643788Z +74s P0direct K=1 repeat=4 engine=B1 5000 req 6.0s hostcpu_mean=47%
+2026-10-02T14:18:53.654822Z +79s P0direct K=1 repeat=4 engine=A 5000 req 5.0s hostcpu_mean=44%
+2026-10-02T14:19:03.685808Z +89s P0direct K=100 repeat=0 engine=B1 5000 req 10.0s hostcpu_mean=45%
+2026-10-02T14:19:11.701524Z +97s P0direct K=100 repeat=0 engine=A 5000 req 8.0s hostcpu_mean=45%
+2026-10-02T14:19:17.714115Z +103s P0direct K=100 repeat=0 engine=B2 5000 req 6.0s hostcpu_mean=46%
+2026-10-02T14:19:25.743863Z +111s P0direct K=100 repeat=1 engine=A 5000 req 8.0s hostcpu_mean=48%
+2026-10-02T14:19:35.756549Z +121s P0direct K=100 repeat=1 engine=B1 5000 req 10.0s hostcpu_mean=44%
+2026-10-02T14:19:41.769094Z +127s P0direct K=100 repeat=1 engine=B2 5000 req 6.0s hostcpu_mean=46%
+2026-10-02T14:19:47.800453Z +133s P0direct K=100 repeat=2 engine=B2 5000 req 6.0s hostcpu_mean=47%
+2026-10-02T14:19:55.818063Z +141s P0direct K=100 repeat=2 engine=A 5000 req 8.0s hostcpu_mean=48%
+2026-10-02T14:20:05.830286Z +151s P0direct K=100 repeat=2 engine=B1 5000 req 10.0s hostcpu_mean=45%
+2026-10-02T14:20:11.857122Z +157s P0direct K=100 repeat=3 engine=B2 5000 req 6.0s hostcpu_mean=47%
+2026-10-02T14:20:19.873551Z +165s P0direct K=100 repeat=3 engine=A 5000 req 8.0s hostcpu_mean=48%
+2026-10-02T14:20:29.887785Z +175s P0direct K=100 repeat=3 engine=B1 5000 req 10.0s hostcpu_mean=48%
+2026-10-02T14:20:35.916067Z +181s P0direct K=100 repeat=4 engine=B2 5000 req 6.0s hostcpu_mean=50%
+2026-10-02T14:20:44.932462Z +190s P0direct K=100 repeat=4 engine=B1 5000 req 9.0s hostcpu_mean=49%
+2026-10-02T14:20:52.951510Z +198s P0direct K=100 repeat=4 engine=A 5000 req 8.0s hostcpu_mean=47%
+2026-10-02T14:20:54.509498Z +199s E0 Logistic window=700 fire=0.214
+2026-10-02T14:20:58.842509Z +204s E0 RandomForest window=0 fire=0.224
+2026-10-02T14:21:02.750189Z +208s E0 XGBoost window=0 fire=0.307
+2026-10-02T14:21:02.750579Z +208s cleanup leftover_deleted=0 remaining=0

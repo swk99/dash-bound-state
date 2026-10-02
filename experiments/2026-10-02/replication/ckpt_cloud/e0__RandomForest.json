@@ -1,0 +1,1 @@
+{"model": "RandomForest", "tau_s1": 0.5032152391133569, "tau_s2": 0.4456025939111886, "dataset_fire_rate": 0.28778304722463427, "window_start": 0, "window_fire_rate_pi1": 0.224, "threads": "{\"s1\": 1, \"s2\": 1}"}

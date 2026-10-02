@@ -17,7 +17,7 @@ import redis
 
 import config as cfg
 from models import load_dash_harness
-from engine import ProposedStatefulEngine
+from engine import ProposedStatefulEngine, RedisFetchBaselineEngine
 from tooling import MinioHandler
 
 # -------------------------
@@ -94,12 +94,12 @@ def run_burst_stress(
     print(f"[BURST TEST] {model_name}  x{burst_factor}", flush=True)
     print("==============================", flush=True)
 
-    rds.flushall()
+    rds.delete(f"dash:state:{symbol}")
     engine = _mk_engine(model_name)
 
     # warmup
     for t in range(WARMUP):
-        engine.process_tick(symbol, data[t], cfg.TAU_CONF)
+        engine.process_tick(symbol, data[t], None)
 
     lat = []
     miss = 0
@@ -112,7 +112,7 @@ def run_burst_stress(
         idx = WARMUP + t
 
         t0 = time.perf_counter_ns()
-        engine.process_tick(symbol, data[idx], cfg.TAU_CONF)
+        engine.process_tick(symbol, data[idx], None)
         t1 = time.perf_counter_ns()
 
         ms = (t1 - t0) / 1e6
@@ -151,43 +151,42 @@ def run_memory_vs_n(
     n_list: List[int] = [1000, 5000, 10000, 20000],
     symbol: str = "sym_mem",
 ) -> pd.DataFrame:
-    print("\n==============================", flush=True)
-    print(f"[MEMORY VS N] {model_name}", flush=True)
-    print("==============================", flush=True)
+    return run_memory_vs_nw(model_name, data, n_list=n_list, symbol=symbol)
 
-    process = psutil.Process()
+
+def run_memory_vs_nw(model_name, data, *, n_list=(1000, 5000, 10000, 20000),
+                     w_list=(10, 30, 60, 120), repeats=5, symbol="sym_mem"):
+    """E2: paired A/B1 footprint, N x W x repeat. Never clears unrelated keys."""
+    import uuid
+    if repeats < 1 or not n_list or not w_list or min(n_list) < 1 or min(w_list) < 1:
+        raise ValueError("positive N, W and repeats required")
+    if max(n_list) > len(data):
+        raise ValueError("not enough input rows")
     rows = []
-
-    for N in n_list:
-        rds.flushall()
-        engine = _mk_engine(model_name)
-
-        # warmup not strictly needed; keep it simple
-        for t in range(N):
-            engine.process_tick(symbol, data[t], cfg.TAU_CONF)
-
-        rss_mb = process.memory_info().rss / (1024 * 1024)
-        redis_key = f"dash:state:{symbol}"
-        redis_len = int(rds.llen(redis_key))
-        redis_bytes = _redis_mem_usage_bytes(redis_key)
-
-        row = {
-            "model": model_name,
-            "N": int(N),
-            "rss_mb": float(rss_mb),
-            "redis_list_len": int(redis_len),   # should be ~W
-            "redis_mem_bytes": None if redis_bytes is None else int(redis_bytes),
-            "W": int(cfg.LOOKBACK_W),
-        }
-        rows.append(row)
-
-        if redis_bytes is None:
-            print(f"N={N} | RSS={rss_mb:.2f} MB | Redis window={redis_len}", flush=True)
-        else:
-            print(f"N={N} | RSS={rss_mb:.2f} MB | Redis window={redis_len} | RedisMem={redis_bytes} bytes", flush=True)
-
+    run = uuid.uuid4().hex
+    for W in w_list:
+        for N in n_list:
+            for repeat in range(repeats):
+                for cls in (ProposedStatefulEngine, RedisFetchBaselineEngine):
+                    engine = _mk_engine(model_name)
+                    engine.wrapper.lookback_w = int(W)
+                    engine = cls(engine.wrapper, rds)
+                    sym = f"{symbol}:{run}:{cls.__name__}:{repeat}"
+                    key = f"dash:state:{sym}"
+                    try:
+                        for t in range(N):
+                            engine.process_tick(sym, data[t])
+                        size = rds.memory_usage(key, samples=0)
+                        if size is None:
+                            raise RuntimeError("MEMORY USAGE returned no state")
+                        rows.append(dict(model=model_name, engine=cls.__name__, N=N, W=W,
+                            repeat=repeat, d=len(cfg.FEATURE_COLS), redis_key=key,
+                            redis_list_len=rds.llen(key), redis_mem_bytes=int(size),
+                            rss_mb=psutil.Process().memory_info().rss / 2**20))
+                    finally:
+                        rds.delete(key)
     df = pd.DataFrame(rows)
-    df.to_csv(RESULTS_DIR / f"memory_vs_n_{model_name}.csv", index=False)
+    df.to_csv(RESULTS_DIR / f"memory_vs_nw_{model_name}.csv", index=False)
     return df
 
 
@@ -204,36 +203,38 @@ def run_gate_ablation(
     print(f"[GATE ABLATION] {model_name}", flush=True)
     print("==============================", flush=True)
 
-    rds.flushall()
-    engine = _mk_engine(model_name)
-
-    lat_gate = []
-    lat_force = []
-
-    # warmup
-    for t in range(WARMUP):
-        engine.process_tick(symbol, data[t], cfg.TAU_CONF)
-
-    for t in range(N_EVAL):
-        idx = WARMUP + t
-
-        # normal gating
-        s1 = time.perf_counter_ns()
-        engine.process_tick(symbol, data[idx], cfg.TAU_CONF)
-        e1 = time.perf_counter_ns()
-        lat_gate.append((e1 - s1) / 1e6)
-
-        # force stage2
-        s2 = time.perf_counter_ns()
-        engine.process_tick(symbol, data[idx], cfg.TAU_CONF, force_stage2=True)
-        e2 = time.perf_counter_ns()
-        lat_force.append((e2 - s2) / 1e6)
+    import uuid
+    token = uuid.uuid4().hex
+    symbols = [f"{symbol}:{token}:gate", f"{symbol}:{token}:force"]
+    engines = [_mk_engine(model_name), _mk_engine(model_name)]
+    lat_gate, lat_force, raw_rows = [], [], []
+    fired = 0
+    rng = np.random.default_rng(20260928)
+    try:
+        for t in range(WARMUP):
+            for eng, sym in zip(engines, symbols):
+                eng.process_tick(sym, data[t])
+        for t in range(N_EVAL):
+            idx = WARMUP + t
+            for which in rng.permutation(2):
+                result = engines[which].process_tick(symbols[which], data[idx],
+                    force_stage2=bool(which))
+                (lat_force if which else lat_gate).append(result['total_ms'])
+                if not which:
+                    fired += int(result['stage2_fired'])
+                raw_rows.append(dict(result, idx=idx, policy='force' if which else 'gate',
+                    model=model_name, tau=engines[which].wrapper.tau_conf, seed=20260928))
+    finally:
+        rds.delete(*[f"dash:state:{sym}" for sym in symbols])
+    pd.DataFrame(raw_rows).to_csv(RESULTS_DIR / f"gate_ticks_{model_name}.csv", index=False)
 
     g = np.asarray(lat_gate, dtype=np.float64)
     f = np.asarray(lat_force, dtype=np.float64)
 
     out = {
         "model": model_name,
+        "gate_firing_rate": fired / N_EVAL,
+        "tau": engines[0].wrapper.tau_conf,
         "p99_gate_ms": float(np.percentile(g, 99)),
         "p99_force_ms": float(np.percentile(f, 99)),
         "ratio_p99": float(np.percentile(f, 99) / max(1e-12, np.percentile(g, 99))),

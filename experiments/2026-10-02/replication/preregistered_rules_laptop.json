@@ -1,0 +1,7 @@
+{
+ "direction_rule": "per environment and K: count repeats with P99_B1/P99_A > 1 (out of 5) and sign of median ratio minus 1; direction \"maintained\" across environments iff median-ratio sign agrees in both environments for that K",
+ "noise_gate_rule": "B2 (no Redis) control: coefficient of variation of per-repeat P99 across 5 repeats; if CV > 0.25 the environment is flagged noisy and A/B1 differences there are reported as inconclusive",
+ "scope_rule": "if the median ratio is <= 1.10 or signs disagree, report \"benefit limited without added network delay\"",
+ "e0_window_rule": "per model: on the full array, compute Stage-1 pi_1 only (scaler + s1.predict_proba); choose the FIRST contiguous 1000-row window starting at offset multiple of 100 (start >= 0) whose fraction pi_1 >= tau_s1 is >= 0.20; then run A/B1/B2 once on it; labels are not inspected before selection",
+ "pooling_rule": "raw data of different environments are never pooled into one quantile"
+}

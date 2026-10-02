@@ -1,0 +1,181 @@
+2026-10-02T11:18:19.724904Z +0s driver start run=dash3_20261002T1122Z
+2026-10-02T11:18:19.963195Z +1s ping P0 mean=0.170 p99=0.405
+2026-10-02T11:18:21.572984Z +2s ping P1 mean=2.882 p99=5.364
+2026-10-02T11:18:21.854701Z +2s ping P0_restore_after_P1 mean=0.232 p99=0.630
+2026-10-02T11:18:23.396805Z +4s ping P2 mean=2.746 p99=5.442
+2026-10-02T11:18:23.692010Z +4s ping P0_restore_after_P2 mean=0.199 p99=0.401
+2026-10-02T11:18:29.407671Z +10s ping P3 mean=11.067 p99=14.044
+2026-10-02T11:18:29.743339Z +10s ping P0_restore_after_P3 mean=0.278 p99=1.015
+2026-10-02T11:18:35.729828Z +16s ping P4 mean=11.604 p99=19.960
+2026-10-02T11:18:36.121059Z +17s ping P0_restore_after_P4 mean=0.283 p99=1.366
+2026-10-02T11:18:44.135373Z +25s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=0 engine=A done 5000 req in 7.7s
+2026-10-02T11:18:48.381810Z +29s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=0 engine=B2 done 5000 req in 4.2s
+2026-10-02T11:18:56.317632Z +37s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=0 engine=B1 done 5000 req in 7.9s
+2026-10-02T11:19:03.035972Z +44s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=1 engine=A done 5000 req in 6.7s
+2026-10-02T11:19:08.745165Z +49s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=1 engine=B2 done 5000 req in 5.7s
+2026-10-02T11:19:17.465230Z +58s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=1 engine=B1 done 5000 req in 8.7s
+2026-10-02T11:19:26.378365Z +67s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=2 engine=B1 done 5000 req in 8.9s
+2026-10-02T11:19:31.338653Z +72s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=2 engine=B2 done 5000 req in 5.0s
+2026-10-02T11:19:38.633769Z +79s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=2 engine=A done 5000 req in 7.3s
+2026-10-02T11:19:47.694131Z +88s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=3 engine=B1 done 5000 req in 9.0s
+2026-10-02T11:19:55.349027Z +96s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=3 engine=A done 5000 req in 7.7s
+2026-10-02T11:20:00.366135Z +101s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=3 engine=B2 done 5000 req in 5.0s
+2026-10-02T11:20:05.213700Z +106s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=4 engine=B2 done 5000 req in 4.8s
+2026-10-02T11:20:14.333152Z +115s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=4 engine=B1 done 5000 req in 9.1s
+2026-10-02T11:20:21.025024Z +122s latency_matrix model=XGBoost K=1 W=30 profile=P0 repeat=4 engine=A done 5000 req in 6.7s
+2026-10-02T11:20:21.050291Z +122s condition done XGBoost K=1 P0 remaining_budget=86.0min
+2026-10-02T11:20:31.016134Z +132s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=0 engine=B1 done 5000 req in 10.0s
+2026-10-02T11:20:37.220259Z +138s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=0 engine=B2 done 5000 req in 6.2s
+2026-10-02T11:20:44.740145Z +145s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=0 engine=A done 5000 req in 7.5s
+2026-10-02T11:20:50.412011Z +151s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=1 engine=B2 done 5000 req in 5.6s
+2026-10-02T11:20:58.436417Z +159s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=1 engine=A done 5000 req in 8.0s
+2026-10-02T11:21:08.855801Z +169s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=1 engine=B1 done 5000 req in 10.4s
+2026-10-02T11:21:16.777663Z +177s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=2 engine=A done 5000 req in 7.9s
+2026-10-02T11:21:21.444347Z +182s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=2 engine=B2 done 5000 req in 4.7s
+2026-10-02T11:21:30.114117Z +191s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=2 engine=B1 done 5000 req in 8.7s
+2026-10-02T11:21:40.790178Z +201s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=3 engine=B1 done 5000 req in 10.6s
+2026-10-02T11:21:46.042421Z +207s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=3 engine=B2 done 5000 req in 5.3s
+2026-10-02T11:21:53.163762Z +214s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=3 engine=A done 5000 req in 7.1s
+2026-10-02T11:21:58.286390Z +219s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=4 engine=B2 done 5000 req in 5.1s
+2026-10-02T11:22:06.010041Z +227s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=4 engine=A done 5000 req in 7.7s
+2026-10-02T11:22:15.259852Z +236s latency_matrix model=XGBoost K=10 W=30 profile=P0 repeat=4 engine=B1 done 5000 req in 9.2s
+2026-10-02T11:22:15.289592Z +236s condition done XGBoost K=10 P0 remaining_budget=84.1min
+2026-10-02T11:22:26.586638Z +247s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=0 engine=A done 5000 req in 11.3s
+2026-10-02T11:22:36.026235Z +257s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=0 engine=B2 done 5000 req in 9.4s
+2026-10-02T11:22:48.995001Z +270s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=0 engine=B1 done 5000 req in 13.0s
+2026-10-02T11:22:57.114353Z +278s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=1 engine=B2 done 5000 req in 8.1s
+2026-10-02T11:23:10.831499Z +291s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=1 engine=B1 done 5000 req in 13.7s
+2026-10-02T11:23:21.083040Z +302s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=1 engine=A done 5000 req in 10.3s
+2026-10-02T11:23:28.477733Z +309s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=2 engine=B2 done 5000 req in 7.4s
+2026-10-02T11:23:42.359154Z +323s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=2 engine=B1 done 5000 req in 13.9s
+2026-10-02T11:23:53.211271Z +334s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=2 engine=A done 5000 req in 10.9s
+2026-10-02T11:24:06.833570Z +347s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=3 engine=B1 done 5000 req in 13.6s
+2026-10-02T11:24:17.724471Z +358s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=3 engine=A done 5000 req in 10.9s
+2026-10-02T11:24:25.848939Z +366s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=3 engine=B2 done 5000 req in 8.1s
+2026-10-02T11:24:37.401213Z +378s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=4 engine=A done 5000 req in 11.5s
+2026-10-02T11:24:51.424879Z +392s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=4 engine=B1 done 5000 req in 14.0s
+2026-10-02T11:24:58.861906Z +399s latency_matrix model=XGBoost K=100 W=30 profile=P0 repeat=4 engine=B2 done 5000 req in 7.4s
+2026-10-02T11:24:58.885464Z +399s condition done XGBoost K=100 P0 remaining_budget=81.3min
+2026-10-02T11:25:17.606820Z +418s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=0 engine=A done 5000 req in 18.6s
+2026-10-02T11:25:22.748590Z +423s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=0 engine=B2 done 5000 req in 5.1s
+2026-10-02T11:25:56.150748Z +457s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=0 engine=B1 done 5000 req in 33.4s
+2026-10-02T11:26:14.386557Z +475s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=1 engine=A done 5000 req in 18.2s
+2026-10-02T11:26:46.352667Z +507s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=1 engine=B1 done 5000 req in 32.0s
+2026-10-02T11:26:51.162854Z +512s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=1 engine=B2 done 5000 req in 4.8s
+2026-10-02T11:26:56.612930Z +517s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=2 engine=B2 done 5000 req in 5.4s
+2026-10-02T11:27:28.067182Z +549s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=2 engine=B1 done 5000 req in 31.5s
+2026-10-02T11:27:45.748763Z +566s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=2 engine=A done 5000 req in 17.7s
+2026-10-02T11:28:16.592247Z +597s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=3 engine=B1 done 5000 req in 30.8s
+2026-10-02T11:28:20.931700Z +601s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=3 engine=B2 done 5000 req in 4.3s
+2026-10-02T11:28:39.286999Z +620s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=3 engine=A done 5000 req in 18.4s
+2026-10-02T11:28:57.556479Z +638s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=4 engine=A done 5000 req in 18.2s
+2026-10-02T11:29:30.037484Z +671s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=4 engine=B1 done 5000 req in 32.5s
+2026-10-02T11:29:35.965431Z +677s latency_matrix model=XGBoost K=1 W=30 profile=P1 repeat=4 engine=B2 done 5000 req in 5.9s
+2026-10-02T11:29:36.003350Z +677s condition done XGBoost K=1 P1 remaining_budget=76.7min
+2026-10-02T11:29:55.226171Z +696s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=0 engine=A done 5000 req in 19.2s
+2026-10-02T11:30:00.056209Z +701s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=0 engine=B2 done 5000 req in 4.8s
+2026-10-02T11:30:34.387108Z +735s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=0 engine=B1 done 5000 req in 34.3s
+2026-10-02T11:30:39.571981Z +740s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=1 engine=B2 done 5000 req in 5.2s
+2026-10-02T11:30:58.710651Z +759s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=1 engine=A done 5000 req in 19.1s
+2026-10-02T11:31:31.465990Z +792s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=1 engine=B1 done 5000 req in 32.8s
+2026-10-02T11:32:05.525765Z +826s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=2 engine=B1 done 5000 req in 34.0s
+2026-10-02T11:32:11.406699Z +832s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=2 engine=B2 done 5000 req in 5.9s
+2026-10-02T11:32:32.046417Z +853s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=2 engine=A done 5000 req in 20.6s
+2026-10-02T11:33:07.885513Z +888s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=3 engine=B1 done 5000 req in 35.8s
+2026-10-02T11:33:30.300256Z +911s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=3 engine=A done 5000 req in 22.4s
+2026-10-02T11:33:38.430657Z +919s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=3 engine=B2 done 5000 req in 8.1s
+2026-10-02T11:33:47.051856Z +928s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=4 engine=B2 done 5000 req in 8.6s
+2026-10-02T11:34:07.167439Z +948s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=4 engine=A done 5000 req in 20.1s
+2026-10-02T11:34:44.733886Z +985s latency_matrix model=XGBoost K=10 W=30 profile=P1 repeat=4 engine=B1 done 5000 req in 37.6s
+2026-10-02T11:34:44.770511Z +985s condition done XGBoost K=10 P1 remaining_budget=71.6min
+2026-10-02T11:35:38.849444Z +1039s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=0 engine=B1 done 5000 req in 54.1s
+2026-10-02T11:36:08.447025Z +1069s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=0 engine=A done 5000 req in 29.6s
+2026-10-02T11:36:17.146628Z +1078s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=0 engine=B2 done 5000 req in 8.7s
+2026-10-02T11:37:10.405751Z +1131s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=1 engine=B1 done 5000 req in 53.2s
+2026-10-02T11:37:19.021911Z +1140s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=1 engine=B2 done 5000 req in 8.6s
+2026-10-02T11:37:49.857998Z +1170s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=1 engine=A done 5000 req in 30.8s
+2026-10-02T11:37:58.371576Z +1179s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=2 engine=B2 done 5000 req in 8.5s
+2026-10-02T11:38:50.573051Z +1231s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=2 engine=B1 done 5000 req in 52.2s
+2026-10-02T11:39:19.446775Z +1260s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=2 engine=A done 5000 req in 28.9s
+2026-10-02T11:39:48.980658Z +1290s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=3 engine=A done 5000 req in 29.5s
+2026-10-02T11:39:56.157726Z +1297s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=3 engine=B2 done 5000 req in 7.2s
+2026-10-02T11:40:46.754843Z +1347s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=3 engine=B1 done 5000 req in 50.6s
+2026-10-02T11:41:36.282734Z +1397s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=4 engine=B1 done 5000 req in 49.5s
+2026-10-02T11:41:44.542777Z +1405s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=4 engine=B2 done 5000 req in 8.3s
+2026-10-02T11:42:14.762175Z +1435s latency_matrix model=XGBoost K=100 W=30 profile=P1 repeat=4 engine=A done 5000 req in 30.2s
+2026-10-02T11:42:14.785311Z +1435s condition done XGBoost K=100 P1 remaining_budget=64.1min
+2026-10-02T11:42:33.672384Z +1454s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=0 engine=A done 5000 req in 18.8s
+2026-10-02T11:43:07.096752Z +1488s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=0 engine=B1 done 5000 req in 33.4s
+2026-10-02T11:43:11.830128Z +1492s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=0 engine=B2 done 5000 req in 4.7s
+2026-10-02T11:43:29.392508Z +1510s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=1 engine=A done 5000 req in 17.5s
+2026-10-02T11:43:34.295892Z +1515s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=1 engine=B2 done 5000 req in 4.9s
+2026-10-02T11:44:07.573757Z +1548s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=1 engine=B1 done 5000 req in 33.3s
+2026-10-02T11:44:39.831856Z +1580s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=2 engine=B1 done 5000 req in 32.2s
+2026-10-02T11:44:57.446639Z +1598s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=2 engine=A done 5000 req in 17.6s
+2026-10-02T11:45:01.764221Z +1602s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=2 engine=B2 done 5000 req in 4.3s
+2026-10-02T11:45:19.936897Z +1620s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=3 engine=A done 5000 req in 18.2s
+2026-10-02T11:45:24.044083Z +1625s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=3 engine=B2 done 5000 req in 4.1s
+2026-10-02T11:45:56.464964Z +1657s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=3 engine=B1 done 5000 req in 32.4s
+2026-10-02T11:46:17.489117Z +1678s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=4 engine=A done 5000 req in 21.0s
+2026-10-02T11:46:50.472329Z +1711s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=4 engine=B1 done 5000 req in 33.0s
+2026-10-02T11:46:55.491618Z +1716s latency_matrix model=XGBoost K=1 W=30 profile=P2 repeat=4 engine=B2 done 5000 req in 5.0s
+2026-10-02T11:46:55.514280Z +1716s condition done XGBoost K=1 P2 remaining_budget=59.4min
+2026-10-02T11:47:00.421748Z +1721s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=0 engine=B2 done 5000 req in 4.9s
+2026-10-02T11:47:20.068496Z +1741s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=0 engine=A done 5000 req in 19.6s
+2026-10-02T11:47:54.590857Z +1775s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=0 engine=B1 done 5000 req in 34.5s
+2026-10-02T11:48:19.977497Z +1801s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=1 engine=A done 5000 req in 25.4s
+2026-10-02T11:48:55.738182Z +1836s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=1 engine=B1 done 5000 req in 35.8s
+2026-10-02T11:49:01.089130Z +1842s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=1 engine=B2 done 5000 req in 5.3s
+2026-10-02T11:49:06.504607Z +1847s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=2 engine=B2 done 5000 req in 5.4s
+2026-10-02T11:49:26.728521Z +1867s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=2 engine=A done 5000 req in 20.2s
+2026-10-02T11:50:11.523620Z +1912s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=2 engine=B1 done 5000 req in 44.8s
+2026-10-02T11:50:33.349993Z +1934s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=3 engine=A done 5000 req in 21.7s
+2026-10-02T11:50:40.905453Z +1941s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=3 engine=B2 done 5000 req in 7.6s
+2026-10-02T11:51:15.692816Z +1976s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=3 engine=B1 done 5000 req in 34.8s
+2026-10-02T11:51:21.241970Z +1982s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=4 engine=B2 done 5000 req in 5.5s
+2026-10-02T11:51:55.563751Z +2016s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=4 engine=B1 done 5000 req in 34.3s
+2026-10-02T11:52:17.364270Z +2038s latency_matrix model=XGBoost K=10 W=30 profile=P2 repeat=4 engine=A done 5000 req in 21.8s
+2026-10-02T11:52:17.393215Z +2038s condition done XGBoost K=10 P2 remaining_budget=54.0min
+2026-10-02T11:52:26.100448Z +2047s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=0 engine=B2 done 5000 req in 8.7s
+2026-10-02T11:52:55.954057Z +2076s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=0 engine=A done 5000 req in 29.9s
+2026-10-02T11:53:47.537651Z +2128s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=0 engine=B1 done 5000 req in 51.6s
+2026-10-02T11:54:22.227741Z +2163s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=1 engine=A done 5000 req in 34.7s
+2026-10-02T11:54:30.284761Z +2171s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=1 engine=B2 done 5000 req in 8.1s
+2026-10-02T11:55:23.885013Z +2224s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=1 engine=B1 done 5000 req in 53.6s
+2026-10-02T11:55:32.803672Z +2233s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=2 engine=B2 done 5000 req in 8.9s
+2026-10-02T11:56:26.948250Z +2287s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=2 engine=B1 done 5000 req in 54.1s
+2026-10-02T11:56:59.308217Z +2320s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=2 engine=A done 5000 req in 32.4s
+2026-10-02T11:57:53.904941Z +2374s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=3 engine=B1 done 5000 req in 54.6s
+2026-10-02T11:58:23.962459Z +2404s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=3 engine=A done 5000 req in 30.1s
+2026-10-02T11:58:31.546229Z +2412s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=3 engine=B2 done 5000 req in 7.6s
+2026-10-02T11:59:02.185123Z +2443s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=4 engine=A done 5000 req in 30.6s
+2026-10-02T11:59:57.752233Z +2498s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=4 engine=B1 done 5000 req in 55.6s
+2026-10-02T12:00:06.091152Z +2507s latency_matrix model=XGBoost K=100 W=30 profile=P2 repeat=4 engine=B2 done 5000 req in 8.3s
+2026-10-02T12:00:06.164351Z +2507s condition done XGBoost K=100 P2 remaining_budget=46.2min
+2026-10-02T12:00:17.648990Z +2518s lua cost done
+2026-10-02T12:00:25.002524Z +2526s gating P0 repeat 0 done
+2026-10-02T12:00:32.979474Z +2534s gating P0 repeat 1 done
+2026-10-02T12:00:40.721212Z +2541s gating P0 repeat 2 done
+2026-10-02T12:00:47.631623Z +2548s gating P0 repeat 3 done
+2026-10-02T12:00:53.847563Z +2554s gating P0 repeat 4 done
+2026-10-02T12:01:10.681223Z +2571s gating P2 repeat 0 done
+2026-10-02T12:01:26.551289Z +2587s gating P2 repeat 1 done
+2026-10-02T12:01:43.602073Z +2604s gating P2 repeat 2 done
+2026-10-02T12:02:00.248775Z +2621s gating P2 repeat 3 done
+2026-10-02T12:02:19.167623Z +2640s gating P2 repeat 4 done
+2026-10-02T12:04:04.969769Z +2746s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=0 engine=A done 5000 req in 105.6s
+2026-10-02T12:07:32.932787Z +2953s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=0 engine=B1 done 5000 req in 208.0s
+2026-10-02T12:07:40.948803Z +2961s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=0 engine=B2 done 5000 req in 8.0s
+2026-10-02T12:09:28.342693Z +3069s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=1 engine=A done 5000 req in 107.3s
+2026-10-02T12:12:54.618540Z +3275s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=1 engine=B1 done 5000 req in 206.3s
+2026-10-02T12:13:02.644673Z +3283s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=1 engine=B2 done 5000 req in 8.0s
+2026-10-02T12:13:11.275718Z +3292s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=2 engine=B2 done 5000 req in 8.6s
+2026-10-02T12:16:34.525401Z +3495s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=2 engine=B1 done 5000 req in 203.2s
+2026-10-02T12:18:19.063320Z +3600s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=2 engine=A done 5000 req in 104.5s
+2026-10-02T12:21:56.022417Z +3817s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=3 engine=B1 done 5000 req in 216.9s
+2026-10-02T12:23:44.355049Z +3925s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=3 engine=A done 5000 req in 108.3s
+2026-10-02T12:23:53.333818Z +3934s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=3 engine=B2 done 5000 req in 9.0s
+2026-10-02T12:27:28.145649Z +4149s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=4 engine=B1 done 5000 req in 214.8s
+2026-10-02T12:27:37.790871Z +4158s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=4 engine=B2 done 5000 req in 9.6s
+2026-10-02T12:29:28.887339Z +4269s latency_matrix model=XGBoost K=100 W=30 profile=P3 repeat=4 engine=A done 5000 req in 111.1s
+2026-10-02T12:29:29.333535Z +4270s driver end leftover_keys_deleted=0

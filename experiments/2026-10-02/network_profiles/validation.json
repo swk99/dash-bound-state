@@ -1,0 +1,12 @@
+{
+ "columns_match": true,
+ "row_count_match": true,
+ "section_order": true,
+ "no_duplicate_pk": true,
+ "raw_latency_finite_nonneg": true,
+ "bool_fields_consistent": true,
+ "coverage_in_0_1": true,
+ "memory_nonneg_int": true,
+ "timestamps_iso_utc": true,
+ "recompute_counts_quantiles_coverage_from_raw": true
+}

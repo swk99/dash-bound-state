@@ -9,6 +9,7 @@ import redis
 
 import config as cfg
 from models import DASHModelWrapper
+from redis_state import RedisWindowWriter
 
 
 def _feat_dim() -> int:
@@ -53,12 +54,13 @@ class ProposedStatefulEngine:
     def __init__(self, wrapper: DASHModelWrapper, rds: redis.Redis):
         self.wrapper = wrapper
         self.rds = rds
+        self.writer = RedisWindowWriter(rds)
 
     def process_tick(
         self,
         symbol: str,
         feat_vec: np.ndarray,
-        tau: float,
+        tau: float | None = None,
         force_stage2: bool = False,
     ) -> Dict[str, Any]:
         t_start = time.perf_counter_ns()
@@ -70,10 +72,7 @@ class ProposedStatefulEngine:
 
         # ---- A: Hot-tier update (LPUSH/LTRIM) ----
         t_a0 = time.perf_counter_ns()
-        pipe = self.rds.pipeline(transaction=False)
-        pipe.lpush(key, feat.tobytes())
-        pipe.ltrim(key, 0, W - 1)
-        pipe.execute()
+        self.writer.push(key, feat.tobytes(), W)
         t_a1 = time.perf_counter_ns()
         A_ms = (t_a1 - t_a0) / 1e6
 
@@ -100,6 +99,7 @@ class ProposedStatefulEngine:
             "A_ms": float(A_ms),
             "B1_ms": float(B1_ms),
             "B2_ms": float(B2_ms),
+            "stage2_fired": p2 is not None,
             "total_ms": float((t_end - t_start) / 1e6),
         }
 
@@ -120,12 +120,13 @@ class RedisFetchBaselineEngine:
     def __init__(self, wrapper: DASHModelWrapper, rds: redis.Redis):
         self.wrapper = wrapper
         self.rds = rds
+        self.writer = RedisWindowWriter(rds)
 
     def process_tick(
         self,
         symbol: str,
         feat_vec: np.ndarray,
-        tau: float,
+        tau: float | None = None,
         force_stage2: bool = False,
     ) -> Dict[str, Any]:
         t_start = time.perf_counter_ns()
@@ -137,10 +138,7 @@ class RedisFetchBaselineEngine:
 
         # ---- A: Update + Fetch (I/O-heavy) ----
         t_a0 = time.perf_counter_ns()
-        pipe = self.rds.pipeline(transaction=False)
-        pipe.lpush(key, feat.tobytes())      # ✅ always 6-d bytes
-        pipe.ltrim(key, 0, W - 1)
-        pipe.execute()
+        self.writer.push(key, feat.tobytes(), W)
 
         raw_list = self.rds.lrange(key, 0, W - 1)[::-1]  # oldest -> newest
         if len(raw_list) == 0:
@@ -169,6 +167,7 @@ class RedisFetchBaselineEngine:
             "A_ms": float(A_ms),
             "B1_ms": float(B1_ms),
             "B2_ms": float(B2_ms),
+            "stage2_fired": p2 is not None,
             "total_ms": float((t_end - t_start) / 1e6),
         }
 
@@ -195,7 +194,7 @@ class InMemoryRecomputeEngine:
     def process_tick(
         self,
         current_idx: int,
-        tau: float,
+        tau: float | None = None,
         force_stage2: bool = False,
     ) -> Dict[str, Any]:
         t_start = time.perf_counter_ns()
@@ -226,5 +225,6 @@ class InMemoryRecomputeEngine:
             "A_ms": float(A_ms),
             "B1_ms": float(B1_ms),
             "B2_ms": float(B2_ms),
+            "stage2_fired": p2 is not None,
             "total_ms": float((t_end - t_start) / 1e6),
         } 

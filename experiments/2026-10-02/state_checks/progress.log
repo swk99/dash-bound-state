@@ -1,0 +1,18 @@
+2026-10-02T11:09:02.814035Z +0s start dash_20261002T110902Z_3a641a
+2026-10-02T11:09:03.436770Z +1s state correctness done
+2026-10-02T11:09:18.832528Z +16s E2 W=10 saved
+2026-10-02T11:09:44.510445Z +42s E2 W=30 saved
+2026-10-02T11:09:58.415556Z +56s E2 W=60 saved
+2026-10-02T11:10:13.421177Z +71s E2 W=120 saved
+2026-10-02T11:10:15.463332Z +73s E0 Logistic mism=0
+2026-10-02T11:10:20.366549Z +78s E0 RandomForest mism=0
+2026-10-02T11:10:24.201943Z +82s E0 XGBoost mism=0
+2026-10-02T11:10:26.188398Z +84s cost repeat 0 order=[np.str_('lua'), np.str_('sequential'), np.str_('pipeline_nontx')]
+2026-10-02T11:10:28.638399Z +86s cost repeat 1 order=[np.str_('sequential'), np.str_('lua'), np.str_('pipeline_nontx')]
+2026-10-02T11:10:31.538285Z +89s cost repeat 2 order=[np.str_('sequential'), np.str_('lua'), np.str_('pipeline_nontx')]
+2026-10-02T11:10:36.153535Z +94s cost repeat 3 order=[np.str_('lua'), np.str_('pipeline_nontx'), np.str_('sequential')]
+2026-10-02T11:10:40.555481Z +98s cost repeat 4 order=[np.str_('sequential'), np.str_('pipeline_nontx'), np.str_('lua')]
+2026-10-02T11:10:45.672589Z +103s gating Logistic done
+2026-10-02T11:10:51.306449Z +109s gating RandomForest done
+2026-10-02T11:10:55.173458Z +113s gating XGBoost done
+2026-10-02T11:10:56.761661Z +114s cleanup leftover=0

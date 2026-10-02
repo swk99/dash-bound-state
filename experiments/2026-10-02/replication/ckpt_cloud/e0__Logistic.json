@@ -1,0 +1,1 @@
+{"model": "Logistic", "tau_s1": 0.5136591624213244, "tau_s2": 0.43050828928333307, "dataset_fire_rate": 0.18149756195310934, "window_start": 700, "window_fire_rate_pi1": 0.214, "threads": "{\"s1\": 1, \"s2\": 1}"}
