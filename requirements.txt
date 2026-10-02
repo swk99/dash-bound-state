@@ -1,0 +1,14 @@
+# Artifact compatibility pin; other package versions require validation on the target host.
+scikit-learn==1.6.1
+numpy
+pandas
+scipy
+psutil
+redis>=4.5
+joblib
+torch
+xgboost
+boto3
+websockets
+pyarrow
+matplotlib

@@ -113,7 +113,7 @@ def run_k_benchmark(
     tau = float(cfg.TAU_CONF)
 
     tag = cfg.make_tag(h=int(cfg.HORIZON_H), alpha=alpha, lambda_val=float(cfg.LAMBDA))
-    run_id = f"{model_name}_{tag}_W{W}_tau{tau:g}"
+    run_id = f"{model_name}_{tag}_W{W}_calibrated"
 
     print(f"\n[*] Benchmark: {run_id}")
 
@@ -126,6 +126,7 @@ def run_k_benchmark(
         lookback_w=W,
     )
 
+    tau = harness.tau_conf  # use calibrated per-model threshold
     engine_A = ProposedStatefulEngine(harness, rds)
     engine_B1 = RedisFetchBaselineEngine(harness, rds)
     engine_B2 = InMemoryRecomputeEngine(harness, real_data)

@@ -46,9 +46,14 @@ def _safe_predict_proba_binary(model, x_row: np.ndarray) -> float:
 # =============================================================================
 # Threshold loading (calibrated operating point)
 # =============================================================================
+def _artifact(name: str):
+    primary = cfg.ART_DIR / name
+    return primary if primary.exists() else cfg.BASE_DIR / name
+
+
 def _load_thresholds_if_exists(tag: str) -> Optional[Dict[str, Any]]:
     """
-    Expected file: cfg.ART_DIR / f"thresholds_{tag}.json"
+    Expected file: _artifact(f"thresholds_{tag}.json")
     Expected structure (recommended):
       {
         "models": {
@@ -58,7 +63,7 @@ def _load_thresholds_if_exists(tag: str) -> Optional[Dict[str, Any]]:
         }
       }
     """
-    p = cfg.ART_DIR / f"thresholds_{tag}.json"
+    p = _artifact(f"thresholds_{tag}.json")
     if not p.exists():
         print(f"[!] thresholds not found at {p}. Using cfg.TAU_CONF and tau_s2=0.5.")
         return None
@@ -198,7 +203,7 @@ class DASHModelWrapper:
 
 
 def _load_scaler_if_exists(tag: str) -> Optional[Dict[str, Any]]:
-    p = cfg.ART_DIR / f"scaler_{tag}.pkl"
+    p = _artifact(f"scaler_{tag}.pkl")
     if p.exists():
         obj = joblib.load(p)
         if "mu" in obj and "sd" in obj:
@@ -213,7 +218,7 @@ def load_dash_harness(
     alpha: float = cfg.ALPHA,
     h: int = cfg.HORIZON_H,
     tau_conf: float = cfg.TAU_CONF,          # fallback default (overridden by thresholds if present)
-    lookback_w: int = cfg.LOOKBACK_W,        # kept for API compatibility (unused)
+    lookback_w: int = cfg.LOOKBACK_W,
 ) -> DASHModelWrapper:
     """
     Loads artifacts based on canonical cfg.make_tag().
@@ -235,16 +240,16 @@ def load_dash_harness(
     if model_name == "XGBoost":
         s1 = XGBClassifier()
         s2 = XGBClassifier()
-        s1.load_model(str(cfg.ART_DIR / f"s1_xgb_{tag}.json"))
-        s2.load_model(str(cfg.ART_DIR / f"s2_xgb_{tag}.json"))
+        s1.load_model(str(_artifact(f"s1_xgb_{tag}.json")))
+        s2.load_model(str(_artifact(f"s2_xgb_{tag}.json")))
 
     elif model_name == "RandomForest":
-        s1 = joblib.load(cfg.ART_DIR / f"s1_rf_{tag}.pkl")
-        s2 = joblib.load(cfg.ART_DIR / f"s2_rf_{tag}.pkl")
+        s1 = joblib.load(_artifact(f"s1_rf_{tag}.pkl"))
+        s2 = joblib.load(_artifact(f"s2_rf_{tag}.pkl"))
 
     elif model_name == "Logistic":
-        s1 = joblib.load(cfg.ART_DIR / f"s1_lr_{tag}.pkl")
-        s2 = joblib.load(cfg.ART_DIR / f"s2_lr_{tag}.pkl")
+        s1 = joblib.load(_artifact(f"s1_lr_{tag}.pkl"))
+        s2 = joblib.load(_artifact(f"s2_lr_{tag}.pkl"))
 
     else:
         raise ValueError(f"Unknown model type: {model_name}")
@@ -266,7 +271,7 @@ def load_dash_harness(
             print(f"[!] thresholds_{tag}.json found but parse failed: {type(e).__name__}: {e}")
             print("[!] Falling back to cfg.TAU_CONF and tau_s2=0.5.")
 
-    return DASHModelWrapper(
+    wrapper = DASHModelWrapper(
         model_type=model_name,
         s1_model=s1,
         s2_model=s2,
@@ -275,3 +280,7 @@ def load_dash_harness(
         device=device,
         scaler=scaler,
     )
+    if int(lookback_w) != lookback_w or lookback_w < 1:
+        raise ValueError("lookback_w must be a positive integer")
+    wrapper.lookback_w = int(lookback_w)
+    return wrapper

@@ -16,6 +16,7 @@ import websockets
 import argparse
 
 import config as cfg
+from redis_state import RedisWindowWriter
 
 
 @dataclass
@@ -109,8 +110,7 @@ class EWMA:
 
 
 def redis_push_feature(rds: redis.Redis, key: str, x: np.ndarray, lookback_w: int):
-    rds.lpush(key, x.astype(np.float32).tobytes())
-    rds.ltrim(key, 0, int(lookback_w) - 1)
+    RedisWindowWriter(rds).push(key, np.asarray(x, dtype=np.float32).tobytes(), lookback_w)
 
 
 def flush_to_s3_parquet(s3, rows: list[dict], flush_idx: int, symbol: str):

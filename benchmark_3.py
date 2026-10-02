@@ -155,7 +155,7 @@ def run_network_jitter_benchmark(
     tau = float(cfg.TAU_CONF)
 
     tag = cfg.make_tag(h=int(cfg.HORIZON_H), alpha=alpha, lambda_val=float(cfg.LAMBDA))
-    run_id = f"NET_{model_name}_{tag}_W{W}_tau{tau:g}_K{k}"
+    run_id = f"NET_{model_name}_{tag}_W{W}_calibrated_K{k}"
 
     print("\n==============================================", flush=True)
     print(f"[BENCHMARK 3] Network jitter / remote Redis access", flush=True)
@@ -176,6 +176,7 @@ def run_network_jitter_benchmark(
         lookback_w=W,
     )
 
+    tau = harness.tau_conf  # use calibrated per-model threshold
     engine_A = ProposedStatefulEngine(harness, rds)
     engine_B1 = RedisFetchBaselineEngine(harness, rds)
 
@@ -204,7 +205,7 @@ def run_network_jitter_benchmark(
                     tc_clear(iface)
 
             # Reset redis state
-            rds.flushall()
+            rds.delete(*[f"dash:state:{sym}" for sym in symbols])
 
             # -------------------------
             # Warmup
