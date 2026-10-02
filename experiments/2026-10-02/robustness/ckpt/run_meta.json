@@ -1,0 +1,1 @@
+{"thread_check": {"s1": "1", "s2": "1"}, "loader_stdout": "[*] Loading DASH Harness: XGBoost (Tag: H30_a2_L94) / [*] Loaded tuned thresholds: tau_conf=0.500254, tau_s2=0.386002", "version_warnings": [], "redis_affinity": "pid 239's current affinity mask: 3", "start": "2026-10-02T14:33:38.825059Z", "end": "2026-10-02T14:41:19.479666Z", "leftover_deleted": 0, "remaining": 0}

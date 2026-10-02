@@ -1,0 +1,9 @@
+{
+ "design": "per repeat r: Exp RW runs W in permuted order default_rng([20260928,r,11]); Exp RC runs {1core,2core} in permuted order default_rng([20260928,r,12]); within each condition engines in order default_rng([20260928,r,W_or_coreidx,13]); fresh keys per engine",
+ "prediction_RW": "B1 state_ms (push+LRANGE+decode) increases monotonically with W; A state_ms (push only, non-LSTM) does not depend on W (max/min of mean state_ms across W <= 1.25); B2 state_ms increases with W (O(W) recompute)",
+ "prediction_RW_tail": "P99_B1/P99_A median across repeats increases with W (Spearman sign over 4 W values, descriptive only)",
+ "prediction_RC": "restricting the client to 1 core does not reverse the A/B1 direction at W=30 (median ratio > 1 in both)",
+ "noise_gate": "B2 P99 CV across repeats > 0.25 => condition flagged noisy",
+ "affinity_scope": "only the client process affinity is changed (os.sched_setaffinity); Redis server affinity unchanged (all CPUs)",
+ "label": "single host, controlled conditions; not cross-environment replication"
+}
